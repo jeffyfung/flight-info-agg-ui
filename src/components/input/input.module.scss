@@ -1,0 +1,43 @@
+@import "src/app.scss";
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  gap: 0.5rem;
+  color: #525252;
+  min-width: 400px;
+}
+
+.input {
+  font-size: $h4-font-size;
+  color: black;
+  background-color: white;
+  border-radius: 5px;
+  padding: 7.5px;
+  border: grey solid 0.5px;
+  width: 100%;
+}
+
+.disabled {
+  background-color: #e0e0e0;
+  color: #525252;
+}
+
+// .inputHeader {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+//   align-items: center;
+// flex: 0 0 30%;
+// }
+
+.errorMsg {
+  color: red;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+}

@@ -1,0 +1,38 @@
+@import "src/app.scss";
+
+.userButtonContainer {
+  cursor: grab;
+}
+
+.iconImg {
+  border-radius: 50%;
+  overflow: hidden;
+  border: 0.5px solid grey;
+}
+
+.userMenu {
+  margin-top: 10px;
+}
+
+ul.userMenuContainer {
+  list-style: none;
+  position: absolute;
+  top: calc(100% - 5px);
+  right: 0px;
+  background-color: white;
+  padding: 0px 0;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  min-width: 70px;
+}
+
+li.menuItem {
+  font-size: $h4-font-size;
+  padding: 8px 15px;
+  background-color: white;
+  transition: background-color 0.5s ease-in-out;
+}
+
+li.menuItem:hover {
+  background-color: #80808030;
+}

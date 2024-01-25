@@ -1,0 +1,100 @@
+@import "src/app.scss";
+
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 80vw;
+  gap: 10px;
+}
+
+.currentSelection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  width: 100%;
+  font-size: $h4-font-size;
+  font-weight: bold;
+}
+
+.selectionContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.tag {
+  font-size: $h4-font-size !important;
+}
+
+.selection {
+  composes: tag;
+  border-radius: 7px;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.normalTag {
+  composes: tag;
+  margin: 0 2px;
+}
+
+.locationTag {
+  background-color: $location-color !important;
+}
+
+.airlineTag {
+  background-color: $airline-color !important;
+}
+
+.expandButtonContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2px;
+}
+
+.expandButtonContainer:hover {
+  cursor: grab;
+}
+
+.expandButtonContainer:active {
+  cursor: grabbing;
+}
+
+.expandButton {
+  vertical-align: text-top;
+  font-size: 18px;
+  transition: transform 0.4s ease-out;
+}
+
+.expanded {
+  transform: rotate(-90deg);
+}
+
+.submitButton {
+  font-size: $h4-font-size;
+  align-self: center;
+}
+
+.queryContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.autocomplete {
+  width: 100%;
+}

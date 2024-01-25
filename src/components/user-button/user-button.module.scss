@@ -1,0 +1,18 @@
+@import "src/app.scss";
+
+.container {
+  position: absolute;
+  right: 10px;
+  // font-size: $h4-font-size;
+}
+
+.signInButton {
+  position: absolute;
+  right: 10px;
+  font-size: $h4-font-size;
+  cursor: grab;
+}
+
+.signInButton:hover {
+  color: rgb(161, 120, 39);
+}

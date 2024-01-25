@@ -1,0 +1,106 @@
+@import "src/app.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(222 215 201);
+  border: solid 1px rgb(155 155 155);
+  border-radius: 20px;
+  width: 80vw;
+}
+
+.headerContainer {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  width: 97%;
+  padding-top: 5px;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 2px 0;
+}
+
+.tagsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 25%;
+  gap: 5px;
+  flex-wrap: wrap;
+  padding-right: 10px;
+  box-sizing: border-box;
+}
+
+.tag {
+  font-size: $h4-font-size;
+  border-radius: 15px;
+  padding: 8px;
+}
+
+.locationTag {
+  background-color: $location-color;
+}
+
+.airlineTag {
+  background-color: $airline-color;
+}
+
+.titleContainer {
+  flex: 0 0 75%;
+  border-left: 2px solid #7e7e7e;
+  padding-left: 10px;
+  margin: 10px 0px;
+  box-sizing: border-box;
+
+  h3 {
+    margin: 0;
+  }
+}
+
+.urlButton {
+  position: absolute;
+  left: 0;
+  background-color: transparent;
+  color: black;
+  font-size: $h4-font-size;
+  padding: 0;
+}
+
+.urlButton:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+  border: none;
+  outline: none;
+  padding: 0;
+}
+
+.urlButton:focus {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+  border: none;
+  outline: none;
+  padding: 0;
+}
+
+.urlButton:focus-visible {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+  border: none;
+  outline: none;
+  padding: 0;
+}
+
+.pubDate {
+  align-self: flex-end;
+  font-size: $h4-font-size;
+}

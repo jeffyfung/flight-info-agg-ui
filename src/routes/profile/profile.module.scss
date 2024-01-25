@@ -1,0 +1,57 @@
+@import "src/app.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+h1.title {
+  color: $foreground-color;
+  text-align: center;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.tagsContainer {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin-bottom: 1px;
+}
+
+.tag {
+  font-size: $h4-font-size !important;
+}
+
+.locationTag {
+  background-color: $location-color !important;
+}
+
+.airlineTag {
+  background-color: $airline-color !important;
+}
+
+.submitContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.submitButton {
+  background-color: $foreground-color;
+  border-radius: 5px;
+  padding: 10px;
+}
