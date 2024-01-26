@@ -1,6 +1,5 @@
 import styles from "./login.module.scss";
 import { FaGoogle } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
 import { SignInButton } from "@/components/sign-in-button/sign-in-button";
 import airplaneImgUrl from "@/assets/airplane.jpg";
 
@@ -20,7 +19,7 @@ const LoginSection: React.FC<{}> = () => {
   return (
     <div className={styles.credentialsContainer}>
       <SignInButton providerID="google" providerName="Google" icon={<FaGoogle />} />
-      <SignInButton providerID="github" providerName="GitHub" icon={<FaGithub />} />
+      {/* <SignInButton providerID="github" providerName="GitHub" icon={<FaGithub />} /> */}
     </div>
   );
 };

@@ -31,8 +31,9 @@ interface LoaderData {
   };
 }
 
-// TODO: load more
 // TODO: slight shift in layout when submit query / open & close query bar
+
+const PAGE_SIZE = 8;
 
 const Dashboard: React.FC<{}> = () => {
   const { posts: loadedPosts, selectedLocations: loadedLocations, selectedAirlines: loadedAirlines, tags } = useLoaderData() as LoaderData;
@@ -40,6 +41,7 @@ const Dashboard: React.FC<{}> = () => {
   const [posts, setPosts] = useState<Post[]>(loadedPosts);
   const [locations, setLocations] = useState<LocationDisplay[]>(loadedLocations);
   const [airlines, setAirlines] = useState<AirlineDisplay[]>(loadedAirlines);
+  const [counter, setCounter] = useState(PAGE_SIZE);
 
   const submitQuery = async (selLocations: LocationDisplay[], selAirlines: AirlineDisplay[]): Promise<void> => {
     const {
@@ -53,7 +55,15 @@ const Dashboard: React.FC<{}> = () => {
     setPosts(posts);
     setLocations(locs);
     setAirlines(airlines);
+    setCounter(PAGE_SIZE);
   };
+
+  const loadMore = (): void => {
+    setCounter(counter + PAGE_SIZE);
+  };
+
+  const existingPosts = posts.slice(0, Math.max(counter - PAGE_SIZE, 0));
+  const newPosts = posts.slice(Math.max(counter - PAGE_SIZE, 0), counter);
 
   return (
     <div className={styles.container}>
@@ -61,11 +71,23 @@ const Dashboard: React.FC<{}> = () => {
       {posts.length === 0 ? (
         <p className={styles.noData}>No data found. Please try again with different filters.</p>
       ) : (
-        <div className={styles.posts}>
-          {posts.sort().map((post, idx) => (
-            <PostDisplay key={`${idx}-${post.id}`} post={post} />
-          ))}
-        </div>
+        <>
+          <div className={styles.posts}>
+            {existingPosts.map((post, idx) => (
+              <PostDisplay key={`${idx}-${post.id}`} post={post} />
+            ))}
+          </div>
+          <div key={counter} className={`${styles.posts} ${styles.fadeIn}`}>
+            {newPosts.map((post, idx) => (
+              <PostDisplay key={`${idx}-${post.id}`} post={post} />
+            ))}
+          </div>
+        </>
+      )}
+      {posts.length > counter && (
+        <button className={styles.loadMore} onClick={loadMore}>
+          Load More
+        </button>
       )}
     </div>
   );
