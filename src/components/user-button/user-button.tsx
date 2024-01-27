@@ -14,7 +14,11 @@ export const UserButton: React.FC<{}> = () => {
 
   const logoutHandler = async (_e: React.MouseEvent<HTMLElement>) => {
     await ax.get(`${import.meta.env.VITE_SERVER_ENDPOINT}/logout`);
-    render(true);
+    if (pathname === "/") {
+      render(true);
+    } else {
+      navigateWithTransition("/");
+    }
   };
 
   if (pathname === "/login") return <></>;

@@ -9,7 +9,7 @@ const Layout: React.FC<{}> = () => {
   const navigateWithTransition = useViewTransition();
   const navigation = useNavigation();
 
-  const handleClick = (_e: React.MouseEvent<HTMLElement>) => {
+  const directToDashboard = (_e: React.MouseEvent<HTMLElement>) => {
     navigateWithTransition("/");
   };
 
@@ -22,7 +22,7 @@ const Layout: React.FC<{}> = () => {
         </div>
       )}
       <div className={styles.headerContainer}>
-        <h2 className={styles.appTitle} onClick={handleClick}>
+        <h2 className={styles.appTitle} onClick={directToDashboard}>
           852 Flight Deals
         </h2>
         <UserButton />
