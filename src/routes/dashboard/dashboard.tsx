@@ -31,8 +31,6 @@ interface LoaderData {
   };
 }
 
-// TODO: slight shift in layout when submit query / open & close query bar
-
 const PAGE_SIZE = 8;
 
 const Dashboard: React.FC<{}> = () => {

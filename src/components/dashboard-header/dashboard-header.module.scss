@@ -98,3 +98,7 @@
 .autocomplete {
   width: 100%;
 }
+
+.fadeIn {
+  composes: fadeIn from "../../routes/dashboard/dashboard.module.scss";
+}

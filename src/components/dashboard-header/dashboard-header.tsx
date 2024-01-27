@@ -57,7 +57,7 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({ loadedAirlines
         </div>
       )}
       {showQueryBar && (
-        <div className={styles.queryContainer}>
+        <div className={`${styles.queryContainer} ${styles.fadeIn}`}>
           <Autocomplete
             className={styles.autocomplete}
             multiple //
