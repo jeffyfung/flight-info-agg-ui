@@ -1,6 +1,6 @@
 // import { useFormContext } from "react-hook-form";
-import { AnimatePresence, motion } from "framer-motion";
-import { MdError } from "react-icons/md";
+// import { motion } from "framer-motion";
+// import { MdError } from "react-icons/md";
 import styles from "./input.module.scss";
 import clsx from "clsx";
 
@@ -52,18 +52,18 @@ export const Input: React.FC<InputProps> = ({ type, id, placeholder, defaultValu
   );
 };
 
-const InputError = ({ message }: { message: string }) => {
-  const framerError = {
-    initial: { opacity: 0, y: 10 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: 10 },
-    transition: { duration: 0.2 },
-  };
+// const InputError = ({ message }: { message: string }) => {
+//   const framerError = {
+//     initial: { opacity: 0, y: 10 },
+//     animate: { opacity: 1, y: 0 },
+//     exit: { opacity: 0, y: 10 },
+//     transition: { duration: 0.2 },
+//   };
 
-  return (
-    <motion.div className={styles.errorMsg} {...framerError}>
-      <MdError />
-      {message}
-    </motion.div>
-  );
-};
+//   return (
+//     <motion.div className={styles.errorMsg} {...framerError}>
+//       <MdError />
+//       {message}
+//     </motion.div>
+//   );
+// };

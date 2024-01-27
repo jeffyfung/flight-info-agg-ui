@@ -45,7 +45,7 @@ export const Profile: React.FC = () => {
         selected_locations: selectedLocations.map((loc) => loc.value),
         selected_airlines: selectedAirlines.map((airline) => airline.value),
       };
-      await ax.post(`${import.meta.env.VITE_SERVER_ENDPOINT}/user/profile`, payload);
+      await ax.post(`${import.meta.env.SERVER_ENDPOINT}/user/profile`, payload);
       setLoading(false);
       navigateWithTransition("/");
     } catch (e: any) {
@@ -137,8 +137,8 @@ export const Profile: React.FC = () => {
 };
 
 export const profileLoader = async (): Promise<LoaderData> => {
-  const { data: userProfileData } = await ax.get<{ payload: UserProfile }>(`${import.meta.env.VITE_SERVER_ENDPOINT}/user/profile`);
-  const { data: tagsData } = await ax.get<{ payload: { locations: LocationDisplay[]; airlines: AirlineDisplay[] } }>(`${import.meta.env.VITE_SERVER_ENDPOINT}/tags`);
+  const { data: userProfileData } = await ax.get<{ payload: UserProfile }>(`${import.meta.env.SERVER_ENDPOINT}/user/profile`);
+  const { data: tagsData } = await ax.get<{ payload: { locations: LocationDisplay[]; airlines: AirlineDisplay[] } }>(`${import.meta.env.SERVER_ENDPOINT}/tags`);
   const { locations, airlines } = tagsData.payload;
   const userProfile = userProfileData.payload;
 

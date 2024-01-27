@@ -105,7 +105,7 @@ const getPosts = async (selection?: { locations: LocationDisplay[]; airlines: Ai
         selected_locations: LocationDisplay[];
         selected_airlines: AirlineDisplay[];
       };
-    }>(`${import.meta.env.VITE_SERVER_ENDPOINT}/user/posts`, payload, { withCredentials: true });
+    }>(`${import.meta.env.SERVER_ENDPOINT}/user/posts`, payload, { withCredentials: true });
     const { posts, selected_locations, selected_airlines } = data.payload;
     return {
       posts: posts.map((post) => ({
@@ -121,7 +121,7 @@ const getPosts = async (selection?: { locations: LocationDisplay[]; airlines: Ai
       locations: selection?.locations.map((loc) => loc.value) ?? [],
       airlines: selection?.airlines.map((airline) => airline.value) ?? [],
     };
-    const { data } = await ax.post<{ payload: { posts: PostResponse[] } }>(`${import.meta.env.VITE_SERVER_ENDPOINT}/posts`, payload);
+    const { data } = await ax.post<{ payload: { posts: PostResponse[] } }>(`${import.meta.env.SERVER_ENDPOINT}/posts`, payload);
     return {
       posts: data.payload.posts.map((post) => ({
         ...post,
@@ -136,7 +136,7 @@ const getPosts = async (selection?: { locations: LocationDisplay[]; airlines: Ai
 
 export const dashboardLoader = async (): Promise<LoaderData> => {
   const loaderData = await getPosts();
-  const { data: tagsData } = await ax.get<{ payload: { locations: LocationDisplay[]; airlines: AirlineDisplay[] } }>(`${import.meta.env.VITE_SERVER_ENDPOINT}/tags`);
+  const { data: tagsData } = await ax.get<{ payload: { locations: LocationDisplay[]; airlines: AirlineDisplay[] } }>(`${import.meta.env.SERVER_ENDPOINT}/tags`);
   return {
     ...loaderData,
     tags: tagsData.payload,
