@@ -20,13 +20,14 @@ export class Axios {
   }
 
   async post<T>(url: string, data?: any, config?: any): Promise<AxiosResponse<T>> {
-    const xsrfToken: string | null = extractCookie("flight_info_csrf");
+    // const xsrfToken: string | null = extractCookie("flight_info_csrf");
 
-    if (xsrfToken) {
-      config = config || {};
-      config.headers = config.headers || {};
-      config.headers["X-CSRF-TOKEN"] = xsrfToken;
-    }
+    // if (xsrfToken) {
+    config = config || {};
+    config.headers = config.headers || {};
+    config.headers["Origin"] = "https://flight-info-agg-ui-production.up.railway.app";
+    // config.headers["X-CSRF-TOKEN"] = xsrfToken;
+    // }
 
     return this.instance.post<T>(url, data, config);
   }
