@@ -21,7 +21,7 @@ export class Axios {
   async post<T>(url: string, data?: any, config?: any): Promise<AxiosResponse<T>> {
     config = config || {};
     config.headers = config.headers || {};
-    config.headers["Origin"] = "https://flight-info-agg-ui-production.up.railway.app";
+    // config.headers["Origin"] = "https://flight-info-agg-ui-production.up.railway.app";
 
     return this.instance.post<T>(url, data, config);
   }
