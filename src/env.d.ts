@@ -1,7 +1,7 @@
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
-  readonly SERVER_ENDPOINT: string;
+  readonly VITE_SERVER_ENDPOINT: string;
 }
 
 interface ImportMeta {
