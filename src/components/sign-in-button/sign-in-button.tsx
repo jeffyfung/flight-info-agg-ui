@@ -8,7 +8,7 @@ interface SignInButtonProps {
 
 export const SignInButton: React.FC<SignInButtonProps> = ({ providerID, providerName, icon }) => {
   const handleLogin = () => {
-    window.location.href = `http://localhost:8080/auth?provider=${providerID}`;
+    window.location.href = `${import.meta.env.VITE_SERVER_ENDPOINT}/auth?provider=${providerID}`;
   };
 
   return (
