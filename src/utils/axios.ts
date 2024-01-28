@@ -1,5 +1,4 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios";
-import { extractCookie } from "./cookie";
 
 export class Axios {
   private instance: AxiosInstance;
