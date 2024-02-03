@@ -56,3 +56,16 @@ h1.title {
   border-radius: 5px;
   padding: 10px;
 }
+
+.telegramSetupButtonContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.telegramSetupButton {
+  font-size: $h4-font-size;
+  color: $foreground-color;
+  background-color: $background-color;
+}

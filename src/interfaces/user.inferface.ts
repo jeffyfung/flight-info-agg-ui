@@ -12,6 +12,8 @@ export interface UserProfile extends UserPublicInfo {
   selected_locations: LocationDisplay[];
   selected_airlines: AirlineDisplay[];
   notification: NotificationSetting;
+  telegram_chat_id: number;
+  telegram_uid: string;
 }
 
 export interface LocationDisplay {

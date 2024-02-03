@@ -2,19 +2,18 @@ import { useLoaderData, useSearchParams } from "react-router-dom";
 import styles from "./profile.module.scss";
 import { FormBlock } from "@/components/form-block/form-block";
 import { FaFilter, FaBell } from "react-icons/fa";
-import { Input } from "@/components/input/input";
 import { Autocomplete, Chip, CircularProgress, Switch, TextField } from "@mui/material";
 import { useState } from "react";
 import { ax } from "@/utils/axios";
 import { AirlineDisplay, LocationDisplay, NotificationSetting, UserProfile } from "@/interfaces/user.inferface";
 import { useViewTransition } from "@/utils/hooks/view-transition";
 
-// TODO: rethink the form implementation
-
 interface LoaderData {
-  userProfile: Omit<UserProfile, "selected_locations" | "selected_airlines"> & {
+  userProfile: Omit<UserProfile, "selected_locations" | "selected_airlines" | "telegram_uid"> & {
     selectedLocations: LocationDisplay[];
     selectedAirlines: AirlineDisplay[];
+    telegramChatID: number;
+    telegramUID: string;
   };
   tags: {
     locations: LocationDisplay[];
@@ -36,6 +35,12 @@ export const Profile: React.FC = () => {
   const [selectedAirlines, setSelectedAirlines] = useState<AirlineDisplay[]>(userProfile.selectedAirlines || []);
 
   const [loading, setLoading] = useState<boolean>(false);
+
+  const handleTelegramSetup = async () => {
+    const telegramStartURL = `https://t.me/flight_deals_852_bot?start=${userProfile.telegramUID}`;
+    window.open(telegramStartURL, "_blank");
+    await handleSubmit();
+  };
 
   const handleSubmit = async (): Promise<void> => {
     try {
@@ -111,16 +116,26 @@ export const Profile: React.FC = () => {
           title="Notification" //
           titleIcon={<FaBell />}
           subtitle="We will send you notification when there are posts that match your filters."
-          schema={[
-            {
-              fieldName: "Your Email",
-              element: <Input type="text" id="location" name="email" disabled={true} defaultValue={userProfile.email} />,
-            },
-            {
-              fieldName: "Email (Daily)",
-              element: <Switch checked={notification} onChange={() => setNotification((state) => !state)} />,
-            },
-          ]}
+          schema={
+            userProfile.telegramChatID === 0
+              ? [
+                  {
+                    element: (
+                      <div className={styles.telegramSetupButtonContainer}>
+                        <button className={styles.telegramSetupButton} onClick={handleTelegramSetup}>
+                          Setup Telegram Notifications
+                        </button>
+                      </div>
+                    ),
+                  },
+                ]
+              : [
+                  {
+                    fieldName: "Telegram (Daily)",
+                    element: <Switch checked={notification} onChange={() => setNotification((state) => !state)} />,
+                  },
+                ]
+          }
         />
       </div>
       <div className={styles.submitContainer}>
@@ -147,6 +162,8 @@ export const profileLoader = async (): Promise<LoaderData> => {
       ...userProfile,
       selectedAirlines: userProfile.selected_airlines,
       selectedLocations: userProfile.selected_locations,
+      telegramChatID: userProfile.telegram_chat_id,
+      telegramUID: userProfile.telegram_uid,
     },
     tags: { locations, airlines },
   };
