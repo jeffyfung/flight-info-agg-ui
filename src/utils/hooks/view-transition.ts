@@ -11,9 +11,9 @@ export const useViewTransition = () => {
   } else {
     return (to: To, options?: NavigateOptions) => {
       document.startViewTransition(() => {
-        flushSync(() => {
-          navigate(to, options);
-        });
+        // flushSync(() => {
+        navigate(to, options);
+        // });
       });
     };
   }
