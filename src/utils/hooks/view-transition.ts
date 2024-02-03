@@ -1,4 +1,4 @@
-import { flushSync } from "react-dom";
+// import { flushSync } from "react-dom";
 import { NavigateOptions, To, useNavigate } from "react-router-dom";
 
 export const useViewTransition = () => {
