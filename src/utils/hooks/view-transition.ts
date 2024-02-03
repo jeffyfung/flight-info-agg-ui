@@ -1,4 +1,4 @@
-// import { flushSync } from "react-dom";
+import { flushSync } from "react-dom";
 import { NavigateOptions, To, useNavigate } from "react-router-dom";
 
 export const useViewTransition = () => {
@@ -11,9 +11,9 @@ export const useViewTransition = () => {
   } else {
     return (to: To, options?: NavigateOptions) => {
       document.startViewTransition(() => {
-        // flushSync(() => {
-        navigate(to, options);
-        // });
+        flushSync(() => {
+          navigate(to, options);
+        });
       });
     };
   }
