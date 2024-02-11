@@ -100,9 +100,9 @@ button:focus-visible {
 // ::view-transition-old(root) {
 //   animation: slide-out 0.5s ease-in-out 1 forwards;
 // }
-// ::view-transition-new(root) {
-//   animation: slide-in 0.75s ease-in-out 1 forwards;
-// }
+::view-transition-new(root) {
+  animation: slide-in 0.75s ease-in-out 1 forwards;
+}
 
 @keyframes slide-in {
   from {
