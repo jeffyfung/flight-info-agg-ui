@@ -1,4 +1,4 @@
-import { useLoaderData, useSearchParams } from "react-router-dom";
+import { useLoaderData, useNavigate, useSearchParams } from "react-router-dom";
 import styles from "./profile.module.scss";
 import { FormBlock } from "@/components/form-block/form-block";
 import { FaFilter, FaBell } from "react-icons/fa";
@@ -6,7 +6,6 @@ import { Autocomplete, Chip, CircularProgress, Switch, TextField } from "@mui/ma
 import { useState } from "react";
 import { ax } from "@/utils/axios";
 import { AirlineDisplay, LocationDisplay, NotificationSetting, UserProfile } from "@/interfaces/user.inferface";
-import { useViewTransition } from "@/utils/hooks/view-transition";
 
 interface LoaderData {
   userProfile: Omit<UserProfile, "selected_locations" | "selected_airlines" | "telegram_uid"> & {
@@ -23,7 +22,6 @@ interface LoaderData {
 
 export const Profile: React.FC = () => {
   const [searchParams, _] = useSearchParams();
-  const navigateWithTransition = useViewTransition();
   const newUser = searchParams.get("new") === "1";
 
   const title = newUser ? "New here? Let's get you all set up!" : "Account Setting";
@@ -35,6 +33,7 @@ export const Profile: React.FC = () => {
   const [selectedAirlines, setSelectedAirlines] = useState<AirlineDisplay[]>(userProfile.selectedAirlines || []);
 
   const [loading, setLoading] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const handleTelegramSetup = async () => {
     const telegramStartURL = `https://t.me/flight_deals_852_bot?start=${userProfile.telegramUID}`;
@@ -52,7 +51,7 @@ export const Profile: React.FC = () => {
       };
       await ax.post(`${import.meta.env.VITE_SERVER_ENDPOINT}/user/profile`, payload);
       setLoading(false);
-      navigateWithTransition("/");
+      navigate("/", { unstable_viewTransition: true });
     } catch (e: any) {
       console.error(e);
     }

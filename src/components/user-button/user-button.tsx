@@ -1,23 +1,22 @@
 import { extractCookie } from "@/utils/cookie";
 import styles from "./user-button.module.scss";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UserPublicInfo } from "@/interfaces/user.inferface";
 import { useState } from "react";
 import { ax } from "@/utils/axios";
 import { UserMenu } from "../user-menu/user-menu";
-import { useViewTransition } from "@/utils/hooks/view-transition";
 
 export const UserButton: React.FC<{}> = () => {
   const [_, render] = useState<boolean>(false);
-  const navigateWithTransition = useViewTransition();
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   const logoutHandler = async (_e: React.MouseEvent<HTMLElement>) => {
     await ax.get(`${import.meta.env.VITE_SERVER_ENDPOINT}/logout`);
     if (pathname === "/") {
       render(true);
     } else {
-      navigateWithTransition("/");
+      navigate("/", { unstable_viewTransition: true });
     }
   };
 
@@ -26,9 +25,9 @@ export const UserButton: React.FC<{}> = () => {
 
   if (!userInfoJSON) {
     return (
-      <div className={styles.signInButton} onClick={() => navigateWithTransition("/login")}>
+      <Link unstable_viewTransition className={styles.signInButton} to={"/login"}>
         Sign In
-      </div>
+      </Link>
     );
   } else {
     const userInfoString = atob(userInfoJSON);
