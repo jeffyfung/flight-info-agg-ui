@@ -9,7 +9,8 @@ const Layout: React.FC<{}> = () => {
   const navigateWithTransition = useViewTransition();
   const navigation = useNavigation();
 
-  const directToDashboard = (_e: React.MouseEvent<HTMLElement>) => {
+  const directToDashboard = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
     navigateWithTransition("/");
   };
 
