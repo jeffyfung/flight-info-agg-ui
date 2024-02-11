@@ -1,4 +1,4 @@
-import { Link, Outlet, useNavigate, useNavigation } from "react-router-dom";
+import { Link, Outlet, useNavigation } from "react-router-dom";
 import styles from "./layout.module.scss";
 import { UserButton } from "../../components/user-button/user-button";
 import React from "react";
