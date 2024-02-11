@@ -2,7 +2,7 @@ import { UserPublicInfo } from "@/interfaces/user.inferface";
 import { useState } from "react";
 import { OutsideClickHandler } from "../outside-click-handler/outside-click-handler";
 import styles from "./user-menu.module.scss";
-import { useViewTransition } from "@/utils/hooks/view-transition";
+import { useNavigate } from "react-router-dom";
 
 interface UserMenuProps {
   userInfo: UserPublicInfo;
@@ -11,7 +11,7 @@ interface UserMenuProps {
 
 export const UserMenu: React.FC<UserMenuProps> = ({ userInfo, handleLogout }) => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
-  const navigateWithTransition = useViewTransition();
+  const navigate = useNavigate();
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
@@ -25,7 +25,7 @@ export const UserMenu: React.FC<UserMenuProps> = ({ userInfo, handleLogout }) =>
 
   const handleProfile = () => {
     setShowMenu(false);
-    navigateWithTransition("/profile");
+    navigate("/profile", { unstable_viewTransition: true });
   };
 
   return (
